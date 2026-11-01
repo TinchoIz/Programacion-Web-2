@@ -1,0 +1,97 @@
+.section-contacto {
+    margin-bottom: 50px;
+}
+
+.formulario-contacto {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #111;
+    border: 1px solid #444;
+    border-radius: 8px;
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.campo-formulario label {
+    color: #ffe81f;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.grupo-motivo {
+    border: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.grupo-motivo label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.grupo-motivo legend {
+    color: #ffe81f;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 0 8px;
+    margin-bottom: 8px;
+}
+
+.campo-formulario input,
+.campo-formulario textarea {
+    padding: 12px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.campo-formulario input:focus,
+.campo-formulario textarea:focus {
+    outline: none;
+    border-color: #00bfff;
+}
+
+.boton-contacto {
+    display: block;
+    margin: 25px auto 0;
+    padding: 12px 28px;
+    font-size: 20px;
+    border: 1px solid #ffe81f;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #ffe81f;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.boton-contacto:hover {
+    background-color: #ffe81f;
+    color: black;
+}
+
+
+/* Vista Tablet */
+
+@media screen and (min-width: 678px) and (max-width: 1024px) {
+
+    main {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}

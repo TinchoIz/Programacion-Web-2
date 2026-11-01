@@ -1,0 +1,91 @@
+.contenedor-juegos {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-top: 60px auto;
+    justify-content: left;
+    border: 1px solid #333;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 15px;;
+}
+
+.imagen-juegos {
+    width: 550px;
+    height: auto;
+    object-fit: cover;
+    object-position:center ;
+    border-radius: 8px;
+    
+}
+
+.contenedor-texto-juegos {
+    max-width: 600px;
+}
+
+.h2-titulo-juegos {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ff1a1a;
+}
+
+.texto-juegos {
+    color: #cccccc;
+    line-height: 1.5;
+}
+
+/* Vista movil */
+
+@media screen and (max-width: 677px) {
+
+.contenedor-juegos {
+        width: 100%;
+        box-sizing: border-box;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 14px;
+        padding: 16px;
+        margin: 0 0 20px;
+    }
+
+    .contenedor-texto-juegos {
+        width: 100%;
+        max-width: none;
+        text-align: center;
+    }
+
+    .h2-titulo-juegos {
+        font-size: 20px;
+        line-height: 1.2;
+        margin: 0;
+    }
+
+}
+
+/* Vista Tablet */
+
+@media screen and (min-width: 678px) and (max-width: 1024px) {
+
+    .contenedor-juegos {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        padding: 18px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+    }
+
+    .contenedor-imagen-juegos {
+        flex: 0 0 240px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .h2-titulo-juegos {
+        font-size: 20px;
+        line-height: 1.25;
+        margin: 0;
+    }
+
+}

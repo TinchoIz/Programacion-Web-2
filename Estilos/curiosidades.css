@@ -1,0 +1,60 @@
+.lista-curiosidades {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 20px;
+}
+.lista-curiosidades li::marker{
+    color: #b57cff;
+    font-weight: bold;
+}
+
+.item-curiosidad {
+    margin-bottom: 18px;
+    color: #cccccc;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+.h2-curiosidades {
+    color: #b57cff;
+    margin-bottom: 15px;
+    font-size: 28px;
+    text-align: center;
+    margin: 40px 0 25px;
+    text-decoration: underline;
+}
+
+/* Vista movil */
+
+@media screen and (max-width: 677px) {
+
+    .h2-curiosidades {
+    font-size: 22px;
+    text-align: center;
+    margin: 24px 0 20px;
+}
+
+.lista-curiosidades {
+    max-width: none;
+    padding-left: 24px;
+}
+
+.item-curiosidad {
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+}
+
+/* Vista Tablet */
+
+@media screen and (min-width: 678px) and (max-width: 1024px) {
+
+    .h2-curiosidades {
+        font-size: 34px;
+    }
+
+    .item-curiosidad {
+        font-size: 18px;
+    }
+}

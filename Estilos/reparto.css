@@ -1,0 +1,98 @@
+.contenedor-reparto {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #333;
+    padding: 12px;
+}
+
+.imagen-reparto {
+    width: 400px;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.nombre-actor {
+    font-size: 20px;
+    color: white;
+}
+
+.h2-titulo-reparto {
+    font-size: 22px;
+    color: #4da6ff;
+    ;
+}
+
+.section-reparto {
+    margin-bottom: 40px;
+}
+
+/* Vista movil */
+@media screen and (max-width: 677px) {
+
+    .contenedor-reparto {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 12px;
+        padding: 0 0 24px;
+        margin-bottom: 28px;
+    }
+
+    .contenedor-texto-reparto {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .h2-titulo-reparto {
+        font-size: 18px;
+        line-height: 1.3;
+        margin: 0;
+    }
+
+    .contenedor-imagen-reparto {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .imagen-reparto {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        border-radius: 6px;
+    }
+
+}
+
+/* Vista Tablet */
+
+@media screen and (min-width: 678px) and (max-width: 1024px) {
+
+    .contenedor-reparto {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 20px 8px;
+    }
+
+    .contenedor-imagen-reparto {
+        flex: 0 0 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .imagen-reparto {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+    }
+
+    .h2-titulo-reparto {
+        font-size: 19px;
+        line-height: 1.25;
+        margin: 0;
+    }
+}

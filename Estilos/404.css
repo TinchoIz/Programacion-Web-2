@@ -1,0 +1,133 @@
+.body-error {
+    background-color: white;
+    color: #222222;
+}
+
+.body-error main {
+    padding: 0 60px 40px;
+}
+
+.header-error,
+.footer-error {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.55),
+            rgba(255, 255, 255, 0.55)), url(../Recursos/Imagenes/Fondo_Estrellas.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header-error {
+    border-bottom: 1px solid #cccccc;
+}
+
+.header-error .contenedor-logo h1 {
+    color: #333333;
+}
+
+.footer-error {
+    min-height: 120px;
+    border-top: 1px solid #cccccc;
+}
+
+
+.main-error {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-error {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+    padding: 35px;
+}
+
+.imagen-error {
+    display: block;
+    max-width: 750px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.contenedor-texto-error {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.titulo-error {
+    font-size: 80px;
+    color: #d9d9d9;
+    margin: 0;
+}
+
+.subtitulo-error {
+    color: #7a7a7a;
+    font-size: 25px;
+    margin: 10px 0 15px;
+}
+
+.texto-error {
+    color: #5e5d5d;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.boton-error {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    color: #333333;
+    background-color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.boton-error:hover {
+    background-color: #d9d9d9;
+    color: #111;
+    text-decoration: none;
+}
+
+/* Vista movil */
+
+@media screen and (max-width: 677px) {
+
+    .body-error main {
+        padding: 24px 16px 32px;
+    }
+
+    .main-error {
+        min-height: auto;
+        align-items: flex-start;
+    }
+
+    .section-error {
+        width: 100%;
+        max-width: 450px;
+        padding: 18px 12px 28px;
+    }
+
+    .imagen-error {
+        width: 100%;
+        margin: 0 auto 8px;
+    }
+
+    .titulo-error {
+        font-size: 42px;
+        margin: 0 0 22px;
+    }
+
+    .boton-error {
+        display: block;
+        width: fit-content;
+        font-size: 16px;
+        padding: 12px 24px;
+        margin: 0 auto;
+    }
+}
