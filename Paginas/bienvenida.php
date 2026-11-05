@@ -14,6 +14,7 @@ if(!isset($_SESSION["usuario_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bienvenida - Star Wars Fan Page</title>
     <link rel="stylesheet" href="../Estilos/general.css?v=2">
+    <link rel="stylesheet" href="../Estilos/contacto.css">
 </head>
 <body>
 
@@ -28,6 +29,13 @@ if(!isset($_SESSION["usuario_id"])) {
             <p class="texto-introduccion-pagina">
                 Ya ingresaste al Cuartel General.
             </p>
+
+            <form action="./logout.php" method="post">
+            <button type="submit" class="boton-contacto">
+                Cerrar sesión
+            </button>
+            </form>
+
         </section>
     </main>
 

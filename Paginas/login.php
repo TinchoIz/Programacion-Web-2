@@ -80,9 +80,9 @@
 
     <main>
         <section class="section-introduccion-pagina">
-            <h1 class="titulo-introduccion-pagina">INICIAR SESIÓN</h1>
+            <h1 class="titulo-introduccion-pagina">ACCESO AL CUARTEL GENERAL</h1>
             <p class="texto-introduccion-pagina">
-               Ingresa tu usuario y contraseña para poder acceder al cuartel general.
+               Ingresa tu usuario y contraseña para poder acceder.
             </p>
            
         </section>
