@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+    if(isset($_SESSION["usuario_id"])) {
+        header("Location: ./bienvenida.php");
+        exit;
+    }
+
     $errores = [];
 
     // temporal - cuenta para hacer pruebas
