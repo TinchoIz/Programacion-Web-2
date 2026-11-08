@@ -5,7 +5,7 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        if(isset($_POST["usurio"])) {
+        if(isset($_POST["usuario"])) {
             $usuario = trim($_POST["usuario"]);
 
             if($usuario === "") {
@@ -41,6 +41,51 @@
                 }
             } else {
                 $errores[] = "No se recibió la contraseña.";
+            }
+
+            if(empty($errores)){
+                require_once '../Configuracion/conexion.php';
+            
+                $sql = "SELECT id FROM usuarios WHERE usuario = ?";
+                $consulta = mysqli_prepare($conexion, $sql);
+
+                mysqli_stmt_bind_param($consulta, "s", $usuario);
+                mysqli_stmt_execute($consulta);
+                mysqli_stmt_store_result($consulta);
+
+                if(mysqli_stmt_num_rows($consulta) > 0) {
+                    $errores[] = "El nombre de usuario ya esta registrado.";
+                }
+                mysqli_stmt_close($consulta);
+            
+                $sql = "SELECT id FROM usuarios WHERE email = ?";
+                $consulta = mysqli_prepare($conexion, $sql);
+
+                mysqli_stmt_bind_param($consulta, "s", $email);
+                mysqli_stmt_execute($consulta);
+                mysqli_stmt_store_result($consulta);
+
+                if(mysqli_stmt_num_rows($consulta) > 0) {
+                    $errores[] = "El correo electrónico ya esta registrado.";
+                }
+                mysqli_stmt_close($consulta);
+
+                if(empty($errores)) {
+                    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+                    $sql = "INSERT INTO usuarios(usuario, email, password) VALUES (?, ?, ?)";
+                    $consulta = mysqli_prepare($conexion, $sql);
+
+                    mysqli_stmt_bind_param($consulta, "sss", $usuario, $email, $passwordHash);
+                    mysqli_stmt_execute($consulta);
+
+                    mysqli_stmt_close($consulta);
+
+                    $_SESSION["mensaje_exito"] = "Tu cuenta se creó correctamente. Ya podés iniciar sesión.";
+
+                    header("Location: ./login.php");
+                    exit;
+                }
             }
     
         }    

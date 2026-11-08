@@ -93,12 +93,20 @@
            
         </section>
 
+        <?php
+        if(isset($_SESSION["mensaje_exito"])){
+            echo '<p class= "texto-introduccion-pagina">' . htmlspecialchars($_SESSION["mensaje_exito"]) . '</p>';
+            
+            unset($_SESSION["mensaje_exito"]);
+        }
+        ?>
+
          <section class="section-contacto">
         <form action="./login.php" method="post" class="formulario-contacto">
         
             <?php
             foreach($errores as $error) {
-            echo "<p>" . htmlspecialchars($error) . "<p>";
+            echo "<p>" . htmlspecialchars($error) . "</p>";
             }
             ?>
 
