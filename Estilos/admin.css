@@ -1,0 +1,32 @@
+.section-administracion {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    overflow-x : auto;
+}
+
+.section-administracion h2{
+    color: #ffe81f;
+    margin-bottom: 24px;
+}
+
+.tabla-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #111;
+}
+
+.tabla-usuarios th,
+.tabla-usuarios td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.tabla-usuarios th {
+    color: #ffe81f;
+}
+
+.tabla-usuarios td {
+    color: #fff;
+}

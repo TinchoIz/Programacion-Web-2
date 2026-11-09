@@ -8,12 +8,21 @@
                 </span>  
                 
                 <a href="/26-ACN2BV-IZAGUIRRE-MARTIN/Paginas/login.php">Mi cuenta</a>
+            
             <?php
+            if($_SESSION["rol"] === "admin") {
+                ?>
+                    <a href="/26-ACN2BV-IZAGUIRRE-MARTIN/Paginas/admin.php">Administración</a>
+                <?php
+            }
+            ?>
+            
+            <?php   
             } else {
                 ?>
                     <a href="/26-ACN2BV-IZAGUIRRE-MARTIN/Paginas/login.php">Ingresar</a>
             
-            <span>Crear cuenta</span>  <!-- temporal hasta crear la pagina-->
+                    <a href="/26-ACN2BV-IZAGUIRRE-MARTIN/Paginas/registro.php">Crear cuenta</a>  
             <?php
             }
             ?>
