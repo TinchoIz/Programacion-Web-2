@@ -41,26 +41,45 @@
         
         if (empty($errores)) {
         
-        // comprobacion temploral
-        // Despues buscar el usuario en MySQL y verificar contraseña con password_verfy()
+        require_once '../Configuracion/conexion.php';
 
-            if (
-                $usuario === $usuarioPrueba["usuario"] &&
-                $password === $usuarioPrueba["password"]
-            ) {
-                session_regenerate_id(true);
+        $sql = "SELECT id, usuario, password, rol, activo FROM usuarios WHERE usuario = ?";
 
-                $_SESSION["usuario_id"] = $usuarioPrueba["id"];
-                $_SESSION["usuario"] = $usuarioPrueba["usuario"];
+        $consulta = mysqli_prepare($conexion, $sql);
 
-                header("Location: ./bienvenida.php");
-                exit;
+        mysqli_stmt_bind_param($consulta, "s", $usuario);
+        mysqli_stmt_execute($consulta);
 
+        $resultado = mysqli_stmt_get_result($consulta);
+        $usuarioEncontrado = mysqli_fetch_assoc($resultado);
+
+        mysqli_stmt_close($consulta);
+
+        if($usuarioEncontrado) {
+            if(password_verify($password, $usuarioEncontrado["password"])) {
+                if($usuarioEncontrado["activo"] == 1) {
+                    session_regenerate_id(true);
+
+                    $_SESSION["usuario_id"] = $usuarioEncontrado["id"];
+                    $_SESSION["usuario"] = $usuarioEncontrado["usuario"];
+                    $_SESSION["rol"] = $usuarioEncontrado["rol"];
+
+                    header("Location: ./bienvenida.php");
+                    exit;
+
+                } else {
+                    $errores[] = "Tu cuenta esta desactivada.";
+                }
             } else {
-                $errores[] = "El usuario o la contraseña son incorrectos.";
+                $errores[] = "el usuario o la contraseña son incorrectos.";
             }
-        }    
-    }
+        } else {
+            $errores[] = "El usuario o la contraseña son incorrectos.";
+        }
+
+            }
+        }
+
     ?>
     
 <!DOCTYPE html>
