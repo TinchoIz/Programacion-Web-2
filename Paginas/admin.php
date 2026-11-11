@@ -46,6 +46,14 @@ $resultado = mysqli_stmt_get_result($consulta);
 
         </section>
 
+        <?php
+        if(isset($_SESSION["mensaje_exito"])) {
+            echo '<p class="texto-introduccion-pagina">' . htmlspecialchars($_SESSION["mensaje_exito"]) . '</p>';
+
+            unset($_SESSION["mensaje_exito"]);
+        }
+        ?>
+
         <section class="section-administracion"> 
         <h2>Usuarios registrados</h2>
         

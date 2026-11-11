@@ -42,6 +42,95 @@ if(!$usuarioEditar) {
     exit;
 }
 
+$errores = [];
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if(isset($_POST["usuario"])) {
+        $usuario = trim($_POST["usuario"]);
+
+        if($usuario === "") {
+            $errores[] = "El nombre de usuario no puede estar vacío."; 
+        } elseif (strlen($usuario) > 50) {
+            $errores[] = "El nombre de usuario no puede superar los 50 caracteres.";
+        }
+    } else {
+        $errores[] = "No se recibió el nombre de usuario.";
+    }
+
+    if(isset($_POST["email"])) {
+        $email = trim($_POST["email"]);
+
+        if($email === "") {
+            $errores[] = "El correo electrónico no puede estar vacío.";
+        } elseif(strlen($email) > 120) {
+            $errores[] = "El correo electrónico no puede superar los 120 caracteres.";
+        } elseif(filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            $errores[] = "El correo electrónico no tiene un formato válido.";
+        }
+    } else {
+        $errores[] = "No se recibió el correo electrónico.";
+    }
+
+    if(isset($usuario)) {
+        $usuarioEditar["usuario"] = $usuario;
+        }
+
+    if(isset($email)) {
+        $usuarioEditar["email"] = $email;
+        }
+
+    if (empty($errores)) {
+
+        $sql = "SELECT id FROM usuarios WHERE usuario = ? AND id !=?";
+        $consulta = mysqli_prepare($conexion, $sql);
+
+        mysqli_stmt_bind_param($consulta, "si", $usuario, $id);
+        mysqli_stmt_execute($consulta);
+        mysqli_stmt_store_result($consulta);
+
+        if(mysqli_stmt_num_rows($consulta) > 0) {
+            $errores[] = "El nombre de usuario ya esta registrado.";
+        }
+
+        mysqli_stmt_close($consulta);
+
+        $sql = "SELECT id FROM usuarios WHERE email = ? AND id != ?";
+        $consulta = mysqli_prepare($conexion, $sql);
+
+        mysqli_stmt_bind_param($consulta, "si", $email, $id);
+        mysqli_stmt_execute($consulta);
+        mysqli_stmt_store_result($consulta);
+
+        if(mysqli_stmt_num_rows($consulta) > 0) {
+            $errores[] = "El correo electrónico ya esta registrado.";
+        }
+
+        mysqli_stmt_close($consulta);
+        
+        if(empty($errores)) {
+            $sql = "UPDATE usuarios SET usuario = ?, email = ? WHERE id = ?";
+            $consulta = mysqli_prepare($conexion, $sql);
+
+            mysqli_stmt_bind_param($consulta, "ssi", $usuario, $email, $id);
+            mysqli_stmt_execute($consulta);
+
+            mysqli_stmt_close($consulta);
+
+            if($id == $_SESSION["usuario_id"]) {
+                $_SESSION["usuario"] = $usuario;
+            }
+
+            $_SESSION["mensaje_exito"] = "Los datos del usuario se actualizaron correctamente.";
+
+            header("Location: ./admin.php");
+            exit;
+        }
+
+        }
+    
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -74,6 +163,12 @@ if(!$usuarioEditar) {
         <section class="section-contacto">
         <form action="./editar-usuario.php?id=<?php echo $id; ?>" method="post" class="formulario-contacto">
          
+        <?php
+        foreach ($errores as $error) {
+            echo "<p>" . htmlspecialchars($error) . "</p>";
+        }
+        ?>
+
         <div class="campo-formulario">
                 <label for="usuario">Nombre de usuario</label>
                 <input type="text" id="usuario" name="usuario" maxlength="50" 
