@@ -90,6 +90,19 @@ $resultado = mysqli_stmt_get_result($consulta);
                         </td>
                                 <td>
                                     <a href="./editar-usuario.php?id=<?php echo (int)$fila["id"]; ?>">Editar</a>
+
+                                    <?php
+                                    if($fila["activo"] == 1 && $fila["id"] != $_SESSION["usuario_id"]) {
+                                    ?>
+
+                                    <form action="./baja-usuario.php" method="post">
+                                        <input type="hidden" name="id" value="<?php echo (int)$fila["id"]; ?>">
+
+                                        <button type="submit">Dar de baja</button>
+                                    </form>
+                                <?php
+                                }
+                                ?>    
                                 </td>
                     </tr>
                     <?php    

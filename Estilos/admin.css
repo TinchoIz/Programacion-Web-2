@@ -30,3 +30,23 @@
 .tabla-usuarios td {
     color: #fff;
 }
+
+.tabla-usuarios form {
+    margin-top: 10px;
+}
+
+.tabla-usuarios button {
+    background-color: transparent;
+    color: #ffe81f;
+    border: 1px solid #ffe81f;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tabla-usuarios button:hover {
+    background-color: #ffe81f;
+    color: #000;
+}
