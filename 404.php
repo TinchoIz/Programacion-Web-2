@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/Configuracion/config.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -8,16 +11,16 @@
     <meta name="description"
         content="Curiosidades y datos interesantes sobre la producción, los personajes y la historia del universo Star Wars.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/Recursos/Iconos/favicon-vader-pixel.ico">
-    <link rel="stylesheet" href="./Estilos/general.css?v=2">
-    <link rel="stylesheet" href="./Estilos/404.css">
+    <link rel="icon" href="<?= BASE_URL ?>/Recursos/Iconos/favicon-vader-pixel.ico">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/Estilos/general.css?v=2">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/Estilos/404.css">
 </head>
 
 <body class="body-error">
     
      <header class="header-principal header-error">
         <div class="contenedor-logo">
-            <img src="./Recursos/Imagenes/StarWars.png" alt="Star Wars">
+            <img src="<?= BASE_URL ?>/Recursos/Imagenes/StarWars.png" alt="Star Wars">
             <h1>Star Wars Fan Page</h1>
         </div>
     </header>
@@ -25,7 +28,7 @@
 
  <main class="main-error">
         <section class="section-error">
-            <img src="./Recursos/Imagenes/404ErrorFinal.png" alt="imagen de error 404" class="imagen-error">
+            <img src="<?= BASE_URL ?>/Recursos/Imagenes/404ErrorFinal.png" alt="imagen de error 404" class="imagen-error">
 
             <div class="contenedor-texto-error">
                 <h1 class="titulo-error">404</h1>
@@ -34,7 +37,7 @@
                     Lo sentimos, tuvimos un problema y no pudimos encontrar la página que estabas buscando.
                 </p>
 
-                <a href="./index.php" class="boton-error">Volver al inicio</a>
+                <a href="<?= BASE_URL ?>/index.php" class="boton-error">Volver al inicio</a>
             </div>
         </section>
     </main>
