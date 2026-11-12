@@ -23,7 +23,7 @@
             if($email === ""){
                 $errores[] = "El correo electrónico no puede estar vacio.";
             
-                } else if(strlen($email) > 150) {
+                } else if(strlen($email) > 120) {
                 $errores[] = "El correo electrónico no puede superar los 120 caracteres.";
 
                 } elseif(filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
