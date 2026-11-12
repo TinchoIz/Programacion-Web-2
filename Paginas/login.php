@@ -8,13 +8,11 @@
 
     $errores = [];
 
-    // temporal - cuenta para hacer pruebas
-    $usuarioPrueba = [
-        "id" => 1,
-        "usuario" => "martin",
-        "password" => "Jedi123"
-    ];
-    // -----
+    $usuarioRecordado = "";
+
+    if (isset($_COOKIE["usuario_recordado"])) {
+        $usuarioRecordado = $_COOKIE["usuario_recordado"];
+    }
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         
@@ -63,6 +61,12 @@
                     $_SESSION["usuario_id"] = $usuarioEncontrado["id"];
                     $_SESSION["usuario"] = $usuarioEncontrado["usuario"];
                     $_SESSION["rol"] = $usuarioEncontrado["rol"];
+
+                    if(isset($_POST["recordar"])) {
+                        setcookie("usuario_recordado", $usuarioEncontrado["usuario"], time() + (30 * 24 * 60 * 60), "/" );
+                    } else {
+                        setcookie("usuario_recordado", "", time() - 3600, "/");
+                    }
 
                     header("Location: ./bienvenida.php");
                     exit;
@@ -131,12 +135,20 @@
 
             <div class="campo-formulario">
                 <label for="usuario">Nombre de usuario</label>
-                <input type="text" id="usuario" name="usuario" required>
+                <input type="text" id="usuario" name="usuario" value="<?php echo htmlspecialchars($usuarioRecordado); ?>" required>
             </div>
 
             <div class="campo-formulario">
                 <label for="password">Contraseña</label>
                 <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="campo-recordar">
+                <label for="recordar">
+                    <input type="checkbox" id="recordar" name="recordar" value="1" <?php if(isset($_COOKIE["usuario_recordado"])) {echo "checked"; }?> >
+                    Recordar mi usuario
+                </label>
+
             </div>
 
             <button type="submit" class="boton-contacto">Iniciar sesión</button>
