@@ -101,9 +101,17 @@ $resultado = mysqli_stmt_get_result($consulta);
                                         <button type="submit">Dar de baja</button>
                                     </form>
                                 <?php
+                                } else if ($fila["activo"] == 0) {
+                                ?>
+                                    <form action="./reactivar-usuario.php" method="post">
+                                        <input type="hidden" name="id" value="<?php echo (int)$fila["id"]; ?>">
+
+                                        <button type="submit">Reactivar</button>
+                                    </form>
+                                <?php    
                                 }
                                 ?>    
-                                </td>
+                        </td>
                     </tr>
                     <?php    
                 }
